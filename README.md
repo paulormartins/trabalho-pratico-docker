@@ -53,7 +53,7 @@ Isso é necessário porque, dentro do ambiente Docker, cada container possui seu
 
 ## Como executar
 
-Para executar o projeto, utilize o comando:
+Para executar o projeto, a partir do diretório raíz, utilize o comando:
 
 ```bash
 docker compose up --build
