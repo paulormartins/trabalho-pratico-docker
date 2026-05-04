@@ -12,11 +12,11 @@ A solução foi estruturada para demonstrar o uso e orquestração de containers
 
 A aplicação é composta pelos seguintes serviços:
 
-* backend-1, backend-2, backend-3: instâncias da aplicação Flask responsáveis pela lógica do jogo
+* backend-1, backend-2, backend-3
 * postgres: banco de dados PostgreSQL utilizado para armazenamento dos dados
-* frontend: container com NGINX responsável por servir o frontend e atuar como proxy reverso
+* frontend
 
-O NGINX recebe todas as requisições e as distribui entre os backends.
+O NGINX é o responsável por receber todas as requisições e distribuir entre os backends.
 
 ---
 
@@ -24,13 +24,13 @@ O NGINX recebe todas as requisições e as distribui entre os backends.
 
 A arquitetura segue um modelo simples de três camadas:
 
-* camada de apresentação: NGINX (frontend)
-* camada de aplicação: múltiplas instâncias do backend em Flask
+* camada de apresentação: frontend do proejto
+* camada de aplicação: backend suportado por múltiplas instâncias
 * camada de dados: PostgreSQL
 
 O fluxo de requisições ocorre da seguinte forma:
 
-1. O cliente acessa a aplicação via navegador
+1. O cliente acessa a aplicação via navegador via URL localhost:8080
 2. O NGINX recebe a requisição
 3. O NGINX encaminha a requisição para uma das instâncias do backend
 4. O backend processa a lógica do jogo
@@ -41,16 +41,14 @@ O fluxo de requisições ocorre da seguinte forma:
 
 ## Comunicação entre serviços
 
-Os containers se comunicam através de uma rede interna criada pelo Docker Compose.
+Os containers se comunicam através de uma rede interna criada no Docker Compose.
 
-Para acessar o banco de dados, o backend utiliza o nome do serviço como host:
+Para acessar o banco de dados, o backend utiliza o nome do serviço como host.
 
 ```
 FLASK_DB_HOST=postgres
 ```
-
 Isso é necessário porque, dentro do ambiente Docker, cada container possui seu próprio ambiente isolado, e o uso de "localhost" não permite a comunicação entre containers diferentes.
-
 ---
 
 ## Como executar
@@ -68,23 +66,20 @@ Frontend: http://localhost:8080
 Backend:  http://localhost:8080/api
 
 ```
-
 ---
 
-## Limpezado Ambiente
+## Limpeza do Ambiente
 
 Para parar os containers:
 
 ```
 docker compose down
-
 ```
 
 Para remover containers e volumes:
 
 ```
 docker compose down -v
-
 ```
 
 Para remover as imagens
@@ -93,7 +88,6 @@ Para remover as imagens
 docker compose down -v --rmi all
 
 ```
-
 
 ## Banco de dados
 
@@ -190,4 +184,4 @@ O projeto atende aos seguintes requisitos:
 * balanceamento de carga entre múltiplas instâncias
 * estrutura modular e de fácil manutenção
 
-A solução é funcional, simples e adequada para demonstrar os conceitos propostos na atividade.
+A solução é funcional, simples e busca aplicar os conceitos vistos em aula de maneira prática.
