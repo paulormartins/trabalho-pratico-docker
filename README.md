@@ -174,6 +174,18 @@ A comunicação entre containers foi feita utilizando o nome do serviço definid
 
 ---
 
+### Escolha da rede bridge
+
+A modelo de rede bridge promove o isolamento do projeto através de uma rede privada, desta forma:
+
+- Containers externos não acessam os serviços internos automaticamente
+- O Postgres pode ficar inacessível externamente
+- Somente o NGINX expõe portas públicas
+
+Promovendo segurança e eficiência na comunicação dos recursos.
+
+---
+
 ## Conclusão
 
 O projeto atende aos seguintes requisitos:
